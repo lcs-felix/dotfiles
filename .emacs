@@ -10,14 +10,21 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Retina")
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 140)
 
 (load-theme 'tango-dark)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+(column-number-mode)
 (global-display-line-numbers-mode)
+
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		shell-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Initialize package sources
 (require 'package)
@@ -57,7 +64,7 @@
          ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
-
+ 
 (use-package counsel
   :bind (("C-M-j" . 'counsel-switch-buffer)
          :map minibuffer-local-map
@@ -66,6 +73,18 @@
   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
   :config
   (counsel-mode 1))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+(use-package super-save
+  :ensure t
+  :init
+  (setq super-save-auto-save-when-idle t)
+  (setq auto-save-default nil)
+  :config
+  (super-save-mode +1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
