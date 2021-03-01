@@ -12,8 +12,6 @@
 
 (set-face-attribute 'default nil :font "Fira Code Retina" :height 140)
 
-(load-theme 'tango-dark)
-
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -47,6 +45,13 @@
 (use-package swiper
   :ensure t)
 
+(use-package solarized-theme
+  :ensure t
+  :config
+  (setq solarized-use-variable-pitch nil)
+  (setq solarized-scale-org-headlines nil)
+  (load-theme 'solarized-light))
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -78,6 +83,9 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (use-package super-save
   :ensure t
   :init
@@ -86,12 +94,20 @@
   :config
   (super-save-mode +1))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(use-package)))
+ '(custom-safe-themes
+   '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" default))
+ '(package-selected-packages '(which-key solarized-theme rainbow-delimiters use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
