@@ -64,7 +64,8 @@
   (ivy-mode 1))
  
 (use-package counsel
-  :bind (("C-M-j" . 'counsel-switch-buffer)
+  :bind (("C-x C-b" . 'counsel-switch-buffer)
+	 ("C-x b" . 'counsel-ibuffer)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
   :custom
@@ -88,7 +89,7 @@
   (setq super-save-auto-save-when-idle t)
   (setq auto-save-default nil)
   :config
-  (super-save-mode +1))
+  (super-save-mode 1))
 
 (use-package which-key
   :init (which-key-mode)
@@ -99,13 +100,6 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
-
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history)))
 
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
@@ -165,7 +159,7 @@
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
  '(xterm-color-names-bright
    ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"]))
-+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
