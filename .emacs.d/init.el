@@ -91,7 +91,7 @@
   (ivy-mode 1))
  
 (use-package counsel
-  :bind (("C-M-j" . 'counsel-switch-buffer)
+  :bind (("C-;" . 'counsel-switch-buffer)
 	 ("C-x b" . 'counsel-ibuffer)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
@@ -150,6 +150,11 @@
   :config
   (evil-mode 1))
 
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 (use-package tide
   :ensure t
   :after (typescript-mode company flycheck)
@@ -191,7 +196,7 @@
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4"))
  '(package-selected-packages
-   '(evil-collection tide evil general ligature quelpa-use-package quelpa doom-themes helpful ivy-rich which-key solarized-theme rainbow-delimiters use-package))
+   '(evel-collection evil-collection tide evil general ligature quelpa-use-package quelpa doom-themes helpful ivy-rich which-key solarized-theme rainbow-delimiters use-package))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
